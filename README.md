@@ -20,7 +20,7 @@ hash functions don't possess, including it being composable. It holds:
 Following that, the hash function is also parallelisable. If a message `m` can be divided into a list of chunks `cs`, the hash of the message can be calculated in parallel:
 
     async.map(cs, Hash.hash, function (err, hs) {
-      hs.reduce(function (a, b) { return a.concat(b); }, Hash.empty());
+      var h = hs.reduce(function (a, b) { return a.concat(b); }, Hash.empty());
     });
 
 All operations in this package are implemented in a very efficient manner using SSE instructions.
