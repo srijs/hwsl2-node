@@ -32,3 +32,11 @@ Hash.prototype.append = function (buf, cb) {
 Hash.prototype.prepend = function (buf, cb) {
   hwsl2.prepend(this.hash, buf, cb);
 };
+
+Hash.hash = function (buf, cb) {
+  var hash = Hash.empty();
+  hash.append(buf, function () {
+    cb(null, hash);
+  });
+};
+
